@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15-alpine3.17
+    networks:
+      - default
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+
+  node:
+    tty: true
+    build:
+      context: node
+    working_dir: /var/www
+    volumes:
+      - ../src:/var/www
+    ports:
+      - "3000:3000"
+      - "80:80"
+    user: node
+    networks:
+      - default
