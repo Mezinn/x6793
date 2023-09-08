@@ -102,7 +102,7 @@ export class ParseSourceProcess {
                         current[needle] = {};
                     }
                 } catch (e) {
-                    reject(e);s
+                    reject(e);
                 }
             });
 
